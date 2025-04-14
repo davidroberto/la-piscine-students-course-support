@@ -20,6 +20,8 @@ class Reservation {
 
 	public $cleaningOption;
 
+	// méthode appelée automatiquement lors de la création de l'instance de classe (new Reservation())
+	// les parametres du constructor sont à remplir aussi lors de l'instance de classe
 	public function __construct($name, $place, $startDate, $endDate, $cleaningOption) {
 
 		// utilisateur envoie ces valeurs
@@ -41,6 +43,13 @@ class Reservation {
 	}
 
 
+	public function cancel() {
+		if ($this->status === "CART") {
+			$this->status = "CANCELED";
+		}
+	}
+
+
 }
 
 
@@ -55,7 +64,11 @@ $cleaning = false;
 
 $reservation = new Reservation($name , $place, $start, $end, $cleaning);
 
+$reservation->cancel();
 
 
-var_dump($reservation); 
+
+
+
+
 
