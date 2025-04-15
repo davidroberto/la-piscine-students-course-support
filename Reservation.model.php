@@ -20,6 +20,14 @@ class Reservation {
 
 	public $cleaningOption;
 
+	public $canceledAt;
+
+	public $paidAt;
+
+	public $comment;
+
+	public $commentedAt;
+
 	// méthode appelée automatiquement lors de la création de l'instance de classe (new Reservation())
 	// les parametres du constructor sont à remplir aussi lors de l'instance de classe
 	public function __construct($name, $place, $startDate, $endDate, $cleaningOption) {
@@ -46,6 +54,22 @@ class Reservation {
 	public function cancel() {
 		if ($this->status === "CART") {
 			$this->status = "CANCELED";
+			$this->canceledAt = new DateTime();
+		}
+	}
+
+	public function pay() {
+		if ($this->status === 'CART') {
+			// on devrait un véritable paiement
+			$this->status = "PAID";
+			$this->paidAt = new DateTime();
+		}
+	}
+
+	public function leaveComment($userComment) {
+		if ($this->status === "PAID") {
+			$this->comment = $userComment;
+			$this->commentedAt = new DateTime();
 		}
 	}
 
@@ -62,13 +86,13 @@ $start = new DateTime('2025-04-04');
 $end = new DateTime('2025-04-05');
 $cleaning = false;
 
+// la variable reservation contient une instance de la classe Reservation / un objet issu de la classe Reservation
+// l'objet reservation contient toutes les propriétés (name etc) définies dans la classe
+// et peut appeler toutes les fonctions définies dans la classe
 $reservation = new Reservation($name , $place, $start, $end, $cleaning);
 
-$reservation->cancel();
+// j'appelle la méthode pay de l'objet reservation. L'objet reservation a récupéré la méthode pay de la classe Reservation
+$reservation->pay();
 
-
-
-
-
-
+$reservation->leaveComment("Super séjour au château de Versailles. Petit bémol pour la hauteur sous plafond. Le wifi marche BOF.")
 
