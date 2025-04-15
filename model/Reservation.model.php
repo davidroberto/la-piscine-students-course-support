@@ -32,6 +32,10 @@ class Reservation {
 	// les parametres du constructor sont à remplir aussi lors de l'instance de classe
 	public function __construct($name, $place, $startDate, $endDate, $cleaningOption) {
 
+		if (strlen($name) < 2) {
+			throw new Exception('Le nom doit comporter plus de deux caractères');
+		}
+
 		// utilisateur envoie ces valeurs
 		// temporairement "en dur"
 		$this->name = $name;
