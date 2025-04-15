@@ -58,15 +58,15 @@
 	<?php } ?>
 
 
-	<?php if (!is_null($reservation)) { ?>
+	<?php if (!is_null($reservationForUser)) { ?>
 
 		<div>
 			<p>Récap de la réservation :</p>
-			<p>Nom : <?php echo $reservation->name; ?></p>
-			<p>Lieu : <?php echo $reservation->place; ?></p>
-			<p>Dates : <?php echo $reservation->startDate->format('d-m-y'); ?> / <?php echo $reservation->endDate->format('d-m-y'); ?></p>
-			<p>Prix total : <?php echo $reservation->totalPrice; ?></p>
-			<p>Option de ménage ? : <?php echo $reservation->cleaningOption ? "oui" : "non"; ?></p>
+			<p>Nom : <?php echo $reservationForUser->name; ?></p>
+			<p>Lieu : <?php echo $reservationForUser->place; ?></p>
+			<p>Dates : <?php echo $reservationForUser->startDate->format('d-m-y'); ?> / <?php echo $reservationForUser->endDate->format('d-m-y'); ?></p>
+			<p>Prix total : <?php echo $reservationForUser->totalPrice; ?></p>
+			<p>Option de ménage ? : <?php echo $reservationForUser->cleaningOption ? "oui" : "non"; ?></p>
 		</div>
 
 	<?php } ?>
