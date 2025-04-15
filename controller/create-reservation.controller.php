@@ -3,6 +3,7 @@
 require_once('../config.php');
 
 require_once('../model/Reservation.model.php');
+require_once('../model/Reservation.repository.php');
 
 $reservation = null;
 $error = null;
@@ -28,10 +29,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	try {
 		// je créé une réservation : une instance de classe, en lui envoyant les données attendues
 		$reservation = new Reservation($name, $place, $startDate, $endDate, $cleaningOption);
+		persistReservation($reservation);
+
 	} catch(Exception $e) {
 		$error = $e->getMessage();
 	}	
 
+	
 }
 
 require_once('../view/create-reservation.view.php');
