@@ -75,24 +75,3 @@ class Reservation {
 
 
 }
-
-
-// objet basé sur la classe Reservation / instance de classe Reservation
-// il contient toutes les propriétés de la classe
-
-$name = "David Robert";
-$place = "Versailles";
-$start = new DateTime('2025-04-04');
-$end = new DateTime('2025-04-05');
-$cleaning = false;
-
-// la variable reservation contient une instance de la classe Reservation / un objet issu de la classe Reservation
-// l'objet reservation contient toutes les propriétés (name etc) définies dans la classe
-// et peut appeler toutes les fonctions définies dans la classe
-$reservation = new Reservation($name , $place, $start, $end, $cleaning);
-
-// j'appelle la méthode pay de l'objet reservation. L'objet reservation a récupéré la méthode pay de la classe Reservation
-$reservation->pay();
-
-$reservation->leaveComment("Super séjour au château de Versailles. Petit bémol pour la hauteur sous plafond. Le wifi marche BOF.")
-
