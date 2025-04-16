@@ -35,7 +35,6 @@ class Reservation {
 			throw new Exception('Le nom doit comporter plus de deux caractères');
 		}
 
-
 		// utilisateur envoie ces valeurs
 		// temporairement "en dur"
 		$this->name = $name;

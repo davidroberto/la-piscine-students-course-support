@@ -17,8 +17,6 @@ function findReservationForUser() {
 		return $_SESSION["reservation"];
 	} else {
 		return null;
-	}
-
-	
+	}	
 
 }
