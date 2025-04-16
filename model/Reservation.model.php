@@ -73,6 +73,7 @@ class Reservation {
 
 		if ($this->status === "PAID") {
 			$this->comment = $userComment;
+			$this->status = "COMMENTED";
 			$this->commentedAt = new DateTime();
 		}
 	}

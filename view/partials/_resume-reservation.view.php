@@ -8,6 +8,9 @@
 		<p>Prix total : <?php echo $reservationForUser->totalPrice; ?></p>
 		<p>Option de ménage ? : <?php echo $reservationForUser->cleaningOption ? "oui" : "non"; ?></p>
 		<p>Statut : <?php echo $reservationForUser->status; ?></p>
+		<?php if (!is_null($reservationForUser->comment)) { ?>
+			<p>Commentaire : <?php echo $reservationForUser->comment; ?></p>
+		<?php } ?>
 	</div>
 
 <?php } ?>
