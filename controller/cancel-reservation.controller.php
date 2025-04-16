@@ -9,5 +9,15 @@ require_once('../model/Reservation.model.php');
 // et je la stocke dans la variable $reservationForUser
 $reservationForUser = findReservationForUser();
 
+$message = "";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+	$reservationForUser->cancel();
+	persistReservation($reservationForUser);
+	$message = "Réservation annulée";
+
+}
+
 require_once('../view/cancel-reservation.view.php');
 
