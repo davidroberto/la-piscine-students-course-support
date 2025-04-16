@@ -7,6 +7,15 @@
 </head>
 <body>
 
+
+
+
+
+c/ventes_immobilieres?locations=r_2
+
+
+
+
 	<header>
 
 		<nav>
