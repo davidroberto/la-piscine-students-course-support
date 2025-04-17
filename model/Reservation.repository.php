@@ -3,8 +3,6 @@
 
 function persistReservation($reservation) {
 
-	session_start();
-
 	// je récupère une instance de la classe PDO connectée à la base de données du projet
 	$pdo = connectToDB();
 
@@ -37,12 +35,41 @@ function persistReservation($reservation) {
 
 function findReservationForUser() {
 
-	session_start();
+	// je récupère une instance de la connexion (PDO)
+	$pdo = connectToDB();
 
-	if (array_key_exists('reservation', $_SESSION)) {
-		return $_SESSION["reservation"];
-	} else {
-		return null;
-	}	
 
+	// je créé une requête SQL qui récupère la dernière réservation au nom de David Robert
+	// trié par id descendant
+	$query = "SELECT * FROM `reservation` 
+				WHERE reservation.name = 'David Robert'
+				ORDER BY id DESC
+				LIMIT 1";
+
+	// j'execute la requête et je récupère les données sous forme de tableau
+	$result = $pdo->query($query, PDO::FETCH_ASSOC);
+	$reservation = $result->fetch();
+
+	return $reservation;
 }
+
+
+
+
+/**
+* Permettrait de récupérer toutes les réservations 
+* function findAllReservations() {
+*
+*	// Trouver toutes les réservation dont le nom est David Robert
+*	// Récupérer la dernère par date de création
+*	$pdo = connectToDB();
+*
+*	$query = "SELECT * FROM `reservation` ORDER BY id DESC";
+*
+*	$result = $pdo->query($query, PDO::FETCH_ASSOC);
+*
+*	$reservations = $result->fetchAll();
+*
+*	return $reservations;
+*}
+**/
